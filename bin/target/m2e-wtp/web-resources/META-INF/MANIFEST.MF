@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-Title: ConTempLa
+Implementation-Version: 1.0
+Implementation-Vendor-Id: org.hr
+Build-Jdk: 1.7.0_71
+Built-By: thegamer
+Created-By: Maven Integration for Eclipse
+Main-Class: org.hr.contempla.ConTempLaApplication
+
