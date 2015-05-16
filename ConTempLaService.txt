@@ -1,0 +1,22 @@
+
+SERVIZIO LOGIN:
+	http://localhost:8080/login?host=https://hr.cineca.it/HRPortal&username=...&password=...
+Restituisce Set-Cookie nell'header.
+
+SERVIZI TIMBRATURE
+Da richiamare con l'header Cookie settato
+
+TIMBRATURE:
+	http://localhost:8080/timbrature?data=2015-05-15
+	
+TEMPO LAVORATO:
+	http://localhost:8080/tempolavorato?data=2015-05-15
+	
+TEMPO MANCANTE:
+	http://localhost:8080/tempomancante?data=2015-05-15
+	
+PERCENTUALE TEMPO:
+	http://localhost:8080/percentualetempo?data=2015-05-15
+	
+ORA USCITA
+	http://localhost:8080/orauscita?data=2015-05-15

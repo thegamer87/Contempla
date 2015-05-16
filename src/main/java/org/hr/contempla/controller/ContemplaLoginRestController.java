@@ -11,18 +11,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import scala.annotation.meta.param;
+
 @RestController
-@RequestMapping("/login")
 public class ContemplaLoginRestController {
 	
-	@RequestMapping(method=RequestMethod.POST)
+	//ex: http://localhost:8080/login?host=https://hr.cineca.it/HRPortal&username=marco.verrocchio@cineca.it&password=
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public boolean login(
 			HttpServletRequest request, 
 	        HttpServletResponse response,
 	        @RequestParam(value="host", required=true) String host, 
 	        @RequestParam(value="username", required=true) String username, 
 	        @RequestParam(value="password", required=true) String password){
-		HRClient hrClient = new HRClient(host);
+		HRClient hrClient; 
+		hrClient = (HRClient)request.getSession().getAttribute("hrclient");
+		if (hrClient == null){
+			System.out.println("Create new hr client");
+			hrClient = new HRClient(host);
+		}
 		boolean loginResult = false;
 		try{
 			loginResult = hrClient.login(username, password);		
@@ -30,9 +37,10 @@ public class ContemplaLoginRestController {
 			loginResult = false;
 		}
 		
-		if (loginResult){
-			request.getSession().setAttribute("hrClient", hrClient);
-		}
+		request.getSession().setAttribute("hrclient", hrClient);
+		//if (loginResult){
+		//	request.getSession().setAttribute("hrclient", hrClient);
+		//}
 		return loginResult;	
 
 	}

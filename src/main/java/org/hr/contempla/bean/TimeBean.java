@@ -24,6 +24,7 @@ public class TimeBean {
 	private List<RecordTimbratura> mTimbratureList;
 	private Date mTimbratureDate;
 	
+	public TimeBean(){}
 	
 	public TimeBean( Period pWorkingDayPeriod, Long pWorkedTime, Long pRemainingTime, Long pPauseTime, List<RecordTimbratura> pTimbratureList, Date pTimbratureDate ) {
 		this.mWorkedTime = pWorkedTime;
@@ -118,11 +119,11 @@ public class TimeBean {
 		return lToday;
 	}
 	
-	private Date getTimbratureDate(){
+	public Date getTimbratureDate(){
 		return mTimbratureDate;
 	}
 	
-	private void setTimbratureDate(Date pTimbratureDate){
+	public void setTimbratureDate(Date pTimbratureDate){
 		mTimbratureDate = pTimbratureDate;
 	}
 	
